@@ -244,6 +244,13 @@ This project is configured with GitHub Actions to run tests automatically on eac
 6. **Run Tests**: Executes the test suite
 7. **Upload Artifacts**: Stores test results for review
 
+### Important CI/CD Requirements
+
+- **Package Lock File**: Ensure `package-lock.json` is committed to your repository. This file is critical for CI/CD as it guarantees consistent installations across environments.
+- **Node.js Version**: The workflow uses Node.js 18. Adjust if your application requires a different version.
+- **Report Artifacts**: Test reports are preserved for 30 days after each run.
+- **Timeouts**: The workflow has a 60-minute timeout to accommodate long-running tests.
+
 ### Viewing CI Results
 
 After tests run in the CI pipeline:
@@ -270,6 +277,11 @@ After tests run in the CI pipeline:
    - Increase the timeout values in playwright.config.ts
    - Check for performance issues in the application
    - Ensure network connectivity is stable
+
+4. **CI/CD Pipeline dependency errors**
+   - Ensure package-lock.json is committed to your repository
+   - Never add package-lock.json to .gitignore
+   - Run `npm ci` instead of `npm install` in CI/CD environments for consistent installations
 
 ### Solutions for Flaky Tests
 
