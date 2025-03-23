@@ -1,0 +1,44 @@
+{
+  "validSearchQueries": [
+    {
+      "query": "playwright",
+      "expectedTitle": "playwright - MyLocalSearch"
+    },
+    {
+      "query": "automation testing",
+      "expectedTitle": "automation testing - MyLocalSearch"
+    },
+    {
+      "query": "test framework",
+      "expectedTitle": "test framework - MyLocalSearch"
+    }
+  ],
+  "emptySearchQuery": {
+    "query": "",
+    "expectedBehavior": "stay on home page"
+  },
+  "specialCharacterQuery": {
+    "query": "test!@#$%^&*()",
+    "expectedTitle": "test!@#$%^&*() - MyLocalSearch"
+  },
+  "longQuery": {
+    "query": "this is a very long search query that contains many words to test the search functionality with a lengthy input string",
+    "expectedTitle": "this is a very long search query that contains many words to test the search functionality with a lengthy input string - MyLocalSearch"
+  },
+  "nonExistentElement": {
+    "locator": "#nonExistentElement",
+    "errorMessage": "Expected element to be visible, but it's not found"
+  },
+  "verifyUI": {
+    "homePage": {
+      "title": "MyLocalSearch",
+      "logoText": "MyLocalSearch",
+      "searchBoxPlaceholder": "Search the web",
+      "buttonTexts": {
+        "search": "Search",
+        "lucky": "I'm Feeling Lucky"
+      },
+      "footerText": "© 2023 MyLocalSearch - A Test Automation Demo"
+    }
+  }
+} 

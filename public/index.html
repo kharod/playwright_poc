@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyLocalSearch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .logo {
+            margin-bottom: 30px;
+            font-size: 6em;
+            font-weight: bold;
+            color: #4285f4;
+        }
+        .logo span:nth-child(1) { color: #4285f4; }
+        .logo span:nth-child(2) { color: #ea4335; }
+        .logo span:nth-child(3) { color: #fbbc05; }
+        .logo span:nth-child(4) { color: #4285f4; }
+        .logo span:nth-child(5) { color: #34a853; }
+        .logo span:nth-child(6) { color: #ea4335; }
+        .logo span:nth-child(7) { color: #4285f4; }
+        .logo span:nth-child(8) { color: #fbbc05; }
+        .logo span:nth-child(9) { color: #34a853; }
+        .logo span:nth-child(10) { color: #ea4335; }
+        #searchContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        #searchBox {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            outline: none;
+        }
+        #searchBox:focus {
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            background-color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
+            color: #3c4043;
+            font-size: 14px;
+            padding: 10px 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dadce0;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <span>M</span><span>y</span><span>L</span><span>o</span><span>c</span><span>a</span><span>l</span><span>S</span><span>e</span><span>a</span><span>r</span><span>c</span><span>h</span>
+    </div>
+    <div id="searchContainer">
+        <input type="text" id="searchBox" placeholder="Search the web">
+        <div class="buttons">
+            <button id="searchButton">Search</button>
+            <button id="luckyButton">I'm Feeling Lucky</button>
+        </div>
+    </div>
+    <footer>
+        <p>© 2023 MyLocalSearch - A Test Automation Demo</p>
+    </footer>
+
+    <script>
+        // Add event listeners
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const query = document.getElementById('searchBox').value;
+            if (query.trim()) {
+                window.location.href = `results.html?q=${encodeURIComponent(query)}`;
+            }
+        });
+
+        document.getElementById('luckyButton').addEventListener('click', function() {
+            const query = document.getElementById('searchBox').value;
+            window.location.href = `lucky.html?q=${encodeURIComponent(query)}`;
+        });
+
+        // Allow search with Enter key
+        document.getElementById('searchBox').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value;
+                if (query.trim()) {
+                    window.location.href = `results.html?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

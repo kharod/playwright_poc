@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - MyLocalSearch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .small-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 30px;
+            text-decoration: none;
+        }
+        .small-logo span:nth-child(1) { color: #4285f4; }
+        .small-logo span:nth-child(2) { color: #ea4335; }
+        .small-logo span:nth-child(3) { color: #fbbc05; }
+        .small-logo span:nth-child(4) { color: #4285f4; }
+        .small-logo span:nth-child(5) { color: #34a853; }
+        #topSearchBox {
+            width: 500px;
+            padding: 10px 15px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-results {
+            padding: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .result {
+            margin-bottom: 25px;
+        }
+        .result h3 {
+            margin-bottom: 5px;
+            color: #1a0dab;
+        }
+        .result .url {
+            color: #006621;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .result .snippet {
+            font-size: 14px;
+            color: #4d5156;
+        }
+        .search-info {
+            color: #70757a;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        footer {
+            background: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="small-logo">
+            <span>M</span><span>y</span><span>L</span><span>o</span><span>c</span><span>a</span><span>l</span><span>S</span><span>e</span><span>a</span><span>r</span><span>c</span><span>h</span>
+        </a>
+        <input type="text" id="topSearchBox">
+    </header>
+
+    <div class="search-results">
+        <div class="search-info">
+            <span id="resultsCount">About 0 results</span> (<span id="searchTime">0.00</span> seconds)
+        </div>
+        <div id="results-container">
+            <!-- Results will be populated here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 MyLocalSearch - A Test Automation Demo</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get query from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q') || '';
+            
+            // Set the search box value
+            document.getElementById('topSearchBox').value = query;
+            
+            // Generate random number of results
+            const resultsCount = Math.floor(Math.random() * 1000000) + 10000;
+            const searchTime = (Math.random() * 0.5 + 0.1).toFixed(2);
+            
+            document.getElementById('resultsCount').textContent = `About ${resultsCount.toLocaleString()} results`;
+            document.getElementById('searchTime').textContent = searchTime;
+            document.title = `${query} - MyLocalSearch`;
+            
+            // Generate mock results based on the query
+            const resultsContainer = document.getElementById('results-container');
+            const numResults = Math.min(10, Math.max(3, Math.floor(Math.random() * 7) + 3));
+            
+            for (let i = 0; i < numResults; i++) {
+                const result = document.createElement('div');
+                result.className = 'result';
+                
+                const title = document.createElement('h3');
+                title.textContent = `${query} - Result ${i + 1} | Example Website`;
+                
+                const url = document.createElement('div');
+                url.className = 'url';
+                url.textContent = `https://example.com/${query.replace(/\s+/g, '-').toLowerCase()}/${i + 1}`;
+                
+                const snippet = document.createElement('div');
+                snippet.className = 'snippet';
+                snippet.textContent = `This is a sample search result for "${query}". It contains some information about the query that might be relevant to what you're looking for. Click to learn more about ${query}.`;
+                
+                result.appendChild(title);
+                result.appendChild(url);
+                result.appendChild(snippet);
+                
+                resultsContainer.appendChild(result);
+            }
+            
+            // Handle search box functionality
+            document.getElementById('topSearchBox').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const newQuery = this.value;
+                    if (newQuery.trim()) {
+                        window.location.href = `results.html?q=${encodeURIComponent(newQuery)}`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

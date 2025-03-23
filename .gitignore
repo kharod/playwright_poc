@@ -1,0 +1,41 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+.pnp.*
+.npm
+
+# Playwright
+/test-results/
+/playwright-report/
+
+
+# Reports and logs
+/reports/
+/logs/
+
+# Cache files
+.DS_Store
+Thumbs.db
+.cache/
+.project
+.settings/
+
+# Coverage directory
+coverage/
+.nyc_output
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace

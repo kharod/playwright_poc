@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Result - MyLocalSearch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        h1 {
+            color: #1a0dab;
+        }
+        .url {
+            color: #006621;
+            margin-bottom: 20px;
+        }
+        .content {
+            line-height: 1.6;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #70757a;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4285f4;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="lucky-title">Lucky Page</h1>
+        <div class="url" id="lucky-url">https://example.com/lucky</div>
+    </header>
+
+    <div class="content" id="lucky-content">
+        <p>This is the top result for your search. You were redirected here because you clicked "I'm Feeling Lucky."</p>
+        <p>Normally, this would take you directly to the first search result for your query, bypassing the search results page.</p>
+    </div>
+
+    <footer>
+        <p>© 2023 MyLocalSearch - A Test Automation Demo</p>
+        <a href="index.html" class="back-btn">Back to Search</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get query from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q') || 'random';
+            
+            // Update page with query-specific content
+            document.title = `${query} - Lucky Result - MyLocalSearch`;
+            document.getElementById('lucky-title').textContent = `${query} - Lucky Result`;
+            document.getElementById('lucky-url').textContent = `https://example.com/${query.replace(/\s+/g, '-').toLowerCase()}/lucky`;
+            
+            const luckyContent = document.getElementById('lucky-content');
+            
+            // Add query-specific content
+            const p1 = document.createElement('p');
+            p1.textContent = `Welcome to the top result for "${query}". This is what you would see if you clicked "I'm Feeling Lucky" on a real search engine.`;
+            
+            const p2 = document.createElement('p');
+            p2.textContent = `Here you can find all the information about ${query} that you were looking for without having to browse through multiple search results.`;
+            
+            // Insert at the beginning
+            luckyContent.insertBefore(p2, luckyContent.firstChild);
+            luckyContent.insertBefore(p1, luckyContent.firstChild);
+        });
+    </script>
+</body>
+</html> 

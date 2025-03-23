@@ -1,0 +1,28 @@
+{
+  "homePage": {
+    "logo": ".logo",
+    "searchBox": "#searchBox",
+    "searchButton": "#searchButton",
+    "luckyButton": "#luckyButton",
+    "footer": "footer p"
+  },
+  "resultsPage": {
+    "smallLogo": ".small-logo",
+    "topSearchBox": "#topSearchBox",
+    "resultsCount": "#resultsCount",
+    "searchTime": "#searchTime",
+    "resultsContainer": "#results-container",
+    "resultItems": ".result",
+    "resultTitle": ".result h3",
+    "resultUrl": ".result .url",
+    "resultSnippet": ".result .snippet",
+    "footer": "footer p"
+  },
+  "luckyPage": {
+    "title": "#lucky-title",
+    "url": "#lucky-url",
+    "content": "#lucky-content",
+    "backButton": ".back-btn",
+    "footer": "footer p"
+  }
+} 
