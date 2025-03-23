@@ -246,7 +246,6 @@ This project is configured with GitHub Actions to run tests automatically on eac
 
 ### Important CI/CD Requirements
 
-- **Package Lock File**: Ensure `package-lock.json` is committed to your repository. This file is critical for CI/CD as it guarantees consistent installations across environments.
 - **Node.js Version**: The workflow uses Node.js 18. Adjust if your application requires a different version.
 - **Report Artifacts**: Test reports are preserved for 30 days after each run.
 - **Timeouts**: The workflow has a 60-minute timeout to accommodate long-running tests.
@@ -278,11 +277,6 @@ After tests run in the CI pipeline:
    - Check for performance issues in the application
    - Ensure network connectivity is stable
 
-4. **CI/CD Pipeline dependency errors**
-   - Ensure package-lock.json is committed to your repository
-   - Never add package-lock.json to .gitignore
-   - Run `npm ci` instead of `npm install` in CI/CD environments for consistent installations
-
 ### Solutions for Flaky Tests
 
 1. Add retries for unstable tests:
@@ -311,6 +305,3 @@ After tests run in the CI pipeline:
 - **Step Logging**: Clear steps in test execution for better debugging
 - **Browser Compatibility**: Tests run on multiple browsers
 - **Responsive Testing**: Tests for different viewport sizes
-- **Code Documentation**: Comprehensive comments and JSDoc annotations
-- **Error Handling**: Proper try-catch blocks and error reporting
-- **Clean Code**: Following SOLID principles and clean code practices
